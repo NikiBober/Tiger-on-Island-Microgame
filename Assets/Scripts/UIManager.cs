@@ -12,6 +12,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _gameOverText;
     [SerializeField] private GameObject _pauseMenu;
 
+    private void OnEnable()
+    {
+        EventManager.OnGameOver += GameOverScreen;
+    }
+    private void OnDisable()
+    {
+        EventManager.OnGameOver -= GameOverScreen;
+    }
+
+    private void GameOverScreen()
+    {
+        Debug.Log("!!!!!");
+    }
     //update in game score text
     public void UpdateScore(int score)
     {

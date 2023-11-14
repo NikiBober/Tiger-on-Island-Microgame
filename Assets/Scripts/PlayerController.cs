@@ -20,4 +20,9 @@ public class PlayerController : RigidbodyMovement
     {
         _rigidbody.AddForce(movementValue.Get<Vector2>() * _movementSpeed);
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        EventManager.GameOver();
+    }
 }
