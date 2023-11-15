@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// Controls island movement and abilities
+/// </summary>
 
 public class IslandController : RigidbodyMovement
 {

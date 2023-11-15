@@ -1,5 +1,8 @@
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
+/// <summary>
+/// Parent class for movable objects
+/// </summary>
 
 public class RigidbodyMovement : MonoBehaviour
 {

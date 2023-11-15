@@ -11,35 +11,22 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _gameOverText;
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _inGameMenu;
+    [SerializeField] private GameObject _gameOverMenu;
 
     private void OnEnable()
     {
-        EventManager.OnGameOver += GameOverScreen;
+        EventManager.OnGameOver += GameOverHandler;
+        EventManager.OnScoreUpdate += ScoreUpdateHandler;
     }
+    
     private void OnDisable()
     {
-        EventManager.OnGameOver -= GameOverScreen;
+        EventManager.OnGameOver -= GameOverHandler;
+        EventManager.OnScoreUpdate -= ScoreUpdateHandler;
     }
 
-    private void GameOverScreen()
-    {
-        Debug.Log("!!!!!");
-    }
-    //update in game score text
-    public void UpdateScore(int score)
-    {
-        _scoreText.text = "Score: " + score;
-    }
-
-    //displays game over menu
-    public void GameOver(int finalScore)
-    {
-        _scoreText.gameObject.SetActive(false);
-        _gameOverText.gameObject.SetActive(true);
-        _gameOverText.text = "Your score is " + finalScore;
-    }
-
-    //change time scale
+    //change time scale and show resume button
     public void TogglePause()
     {
         if (Time.timeScale == 1.0f)
@@ -53,11 +40,27 @@ public class UIManager : MonoBehaviour
             _pauseMenu.SetActive(false);
         }
     }
-    
-    // Load MainScene from start screen
+
+    // Load MainScene
     public void StartGame()
     {
+        Time.timeScale = 1.0f;
+
         SceneManager.LoadScene("MainScene");
     }
 
+    //displays game over menu and change time scale
+    private void GameOverHandler()
+    {
+        _inGameMenu.SetActive(false);
+        _gameOverMenu.SetActive(true);
+        _gameOverText.text = _scoreText.text;
+        Time.timeScale = 0.0f;
+    }
+
+    //update in game score text
+    private void ScoreUpdateHandler(int score)
+    {
+        _scoreText.text = score.ToString();
+    }
 }
