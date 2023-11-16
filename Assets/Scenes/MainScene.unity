@@ -1058,6 +1058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 643171272}
   _gameOverText: {fileID: 326749662}
+  _coinsScoreText: {fileID: 321050701}
   _pauseMenu: {fileID: 326419541}
   _inGameMenu: {fileID: 1251728026}
   _gameOverMenu: {fileID: 1882815536}
@@ -2806,7 +2807,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _delay: 1
   _points: 1
-  _score: 0
 --- !u!4 &1980228937
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [Header("UI elements")]
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _gameOverText;
+    [SerializeField] private TextMeshProUGUI _coinsScoreText;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _inGameMenu;
     [SerializeField] private GameObject _gameOverMenu;
@@ -26,6 +27,10 @@ public class UIManager : MonoBehaviour
         EventManager.OnScoreUpdate -= ScoreUpdateHandler;
     }
 
+    private void Start()
+    {
+        _coinsScoreText.text = PlayerPrefs.GetInt("CoinsScore").ToString();
+    }
     //change time scale and show resume button
     public void TogglePause()
     {

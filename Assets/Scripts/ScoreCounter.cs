@@ -8,10 +8,23 @@ public class ScoreCounter : MonoBehaviour
 {
     [SerializeField] private float _delay = 1.0f;
     [SerializeField] private int _points = 1;
-    [SerializeField] private int _score = 0;
+    
+    private int _score = 0;
+    private int _coinsScore = 0;
+
+    private void OnEnable()
+    {
+        EventManager.OnGameOver += SaveCoinsScore;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnGameOver -= SaveCoinsScore;
+    }
 
     private void Start()
     {
+        _coinsScore = PlayerPrefs.GetInt("CoinsScore");
         StartCoroutine(CountScoreRoutine());
     }
 
@@ -23,5 +36,11 @@ public class ScoreCounter : MonoBehaviour
             _score += _points;
             EventManager.ScoreUpdate(_score);
         }
+    }
+
+    private void SaveCoinsScore()
+    {
+        _coinsScore += _score;
+        PlayerPrefs.SetInt("CoinsScore", _coinsScore);
     }
 }
