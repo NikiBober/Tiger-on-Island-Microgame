@@ -18,7 +18,7 @@ public class PlayerController : RigidbodyMovement
     //move player with speed
     private void OnMove (InputValue movementValue)
     {
-        _rigidbody.AddForce(movementValue.Get<Vector2>() * _movementSpeed);
+        _rigidbody.AddForce(movementValue.Get<Vector2>() * _speed);
     }
 
     //detect game over condition

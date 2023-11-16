@@ -1304,6 +1304,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1440217314}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &947204577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,7 +1537,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 5
+  m_XDamping: 3
   m_YDamping: 5
   m_ZDamping: 1
   m_TargetMovementOnly: 1
@@ -1853,6 +1865,7 @@ GameObject:
   - component: {fileID: 1440217317}
   - component: {fileID: 1440217318}
   - component: {fileID: 1440217319}
+  - component: {fileID: 1440217320}
   m_Layer: 0
   m_Name: Island
   m_TagString: Untagged
@@ -1922,7 +1935,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1939,7 +1952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85a3d85ebb7b214385e1369453d727b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 0.5
+  _speed: 1
   _delay: 1
 --- !u!50 &1440217318
 Rigidbody2D:
@@ -2003,6 +2016,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1440217320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440217314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc0d6a05436d844da761c5ad94bfb6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _decreaseRate: 0.1
+  _minLimit: 0.1
 --- !u!1 &1508303838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2119,7 @@ GameObject:
   - component: {fileID: 1573000210}
   - component: {fileID: 1573000215}
   - component: {fileID: 1573000216}
+  - component: {fileID: 1573000217}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2111,7 +2139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3466fd8679014d4e8bc33bac51340b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 0.5
+  _speed: 1
 --- !u!50 &1573000212
 Rigidbody2D:
   serializedVersion: 4
@@ -2180,7 +2208,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: fae2ee007e86746ebafa7999d00b76cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bec1e6621b8c4df4bad56250225efb36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2202,7 +2230,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2284,9 +2312,23 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.043712318, y: -0.0029141307}
-  m_Size: {x: 0.4786247, y: 0.78503}
+  m_Offset: {x: 0.04518372, y: -0.022360086}
+  m_Size: {x: 1.3120252, y: 1.7017705}
   m_Direction: 0
+--- !u!114 &1573000217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573000209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc0d6a05436d844da761c5ad94bfb6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _decreaseRate: 0.1
+  _minLimit: 0.3
 --- !u!1 &1588281729
 GameObject:
   m_ObjectHideFlags: 0

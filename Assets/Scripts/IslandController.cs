@@ -14,12 +14,17 @@ public class IslandController : RigidbodyMovement
         StartCoroutine(ChangeDirectionRoutine());
     }
 
-    IEnumerator ChangeDirectionRoutine()
+    private IEnumerator ChangeDirectionRoutine()
     {
         while (true)
         {
-            _rigidbody.velocity = Random.insideUnitCircle.normalized * _movementSpeed;
+            _rigidbody.velocity = Random.insideUnitCircle.normalized * _speed;
             yield return new WaitForSeconds(_delay);
         }
+    }
+
+    private IEnumerator ChangeSpeedRoutine()
+    {
+        yield return new WaitForSeconds(_delay);
     }
 }

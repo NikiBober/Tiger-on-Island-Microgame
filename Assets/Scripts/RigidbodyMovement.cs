@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RigidbodyMovement : MonoBehaviour
 {
-    [SerializeField] protected float _movementSpeed = 1.0f;
+    [SerializeField] protected float _speed = 1.0f;
     protected Rigidbody2D _rigidbody;
 
     // get reference to rigidbody
