@@ -1953,7 +1953,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _delay: 1
+  _directionChangeInterval: 1
+  _acceleration: 0.1
 --- !u!50 &1440217318
 Rigidbody2D:
   serializedVersion: 4

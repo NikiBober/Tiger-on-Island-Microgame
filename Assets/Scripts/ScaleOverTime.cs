@@ -13,10 +13,10 @@ public class ScaleOverTime : MonoBehaviour
     {
         _changeScale = Vector3.one * _decreaseRate;
         _minScale = Vector3.one * _minLimit;
-        StartCoroutine(ScaleRoutine());
+        StartCoroutine(DecreaseScaleRoutine());
     }
 
-    private IEnumerator ScaleRoutine()
+    private IEnumerator DecreaseScaleRoutine()
     {
         while (transform.localScale.x > _minScale.x)
         {
