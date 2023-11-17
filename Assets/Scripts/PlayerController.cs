@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 /// <summary>
-/// Controls player movement
+/// Controls player
 /// </summary>
 
 public class PlayerController : RigidbodyMovement

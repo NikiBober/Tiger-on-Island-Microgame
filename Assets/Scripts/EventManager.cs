@@ -4,8 +4,9 @@
 
 public class EventManager
 {
-    public delegate void GameOverAction();
-    public static event GameOverAction OnGameOver;
+    public delegate void GameAction();
+    public static event GameAction OnGameOver;
+    public static event GameAction OnTogglePause;
 
     public delegate void ScoreUpdateAction(int score);
     public static event ScoreUpdateAction OnScoreUpdate;
@@ -14,6 +15,12 @@ public class EventManager
     {
         OnGameOver();
     }
+
+    public static void TogglePause()
+    {
+        OnTogglePause();
+    }
+
 
     public static void ScoreUpdate(int score)
     {

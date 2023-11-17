@@ -1,9 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Decrease scale every frame till min limit is reached
+/// </summary>
+
 public class ScaleOverTime : MonoBehaviour
 {
-    [SerializeField] private float _decreaseRate = 0.1f;
+    [SerializeField] private float _decreaseAmount = 0.1f;
     [SerializeField] private float _minLimit = 0.1f;
 
     private Vector3 _changeScale;
@@ -11,7 +15,7 @@ public class ScaleOverTime : MonoBehaviour
 
     private void Start()
     {
-        _changeScale = Vector3.one * _decreaseRate;
+        _changeScale = Vector3.one * _decreaseAmount;
         _minScale = Vector3.one * _minLimit;
         StartCoroutine(DecreaseScaleRoutine());
     }

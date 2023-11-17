@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+
 /// <summary>
-/// Controls island movement and abilities
+/// Controls island movement
 /// </summary>
 
 public class IslandController : RigidbodyMovement
@@ -15,11 +16,13 @@ public class IslandController : RigidbodyMovement
         StartCoroutine(ChangeDirectionRoutine());
     }
 
+    // increase speed every frame
     private void Update()
     {
         _speed += _acceleration * Time.deltaTime;
     }
 
+    // change direction randomly every interval
     private IEnumerator ChangeDirectionRoutine()
     {
         while (true)

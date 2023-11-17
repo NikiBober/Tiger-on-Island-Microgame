@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+
 /// <summary>
 /// Manages UI 
 /// </summary>
@@ -19,39 +19,32 @@ public class UIManager : MonoBehaviour
     {
         EventManager.OnGameOver += GameOverHandler;
         EventManager.OnScoreUpdate += ScoreUpdateHandler;
+        EventManager.OnTogglePause += TogglePauseHandler;
     }
-    
+
     private void OnDisable()
     {
         EventManager.OnGameOver -= GameOverHandler;
         EventManager.OnScoreUpdate -= ScoreUpdateHandler;
+        EventManager.OnTogglePause -= TogglePauseHandler;
     }
 
     private void Start()
     {
-        _coinsScoreText.text = PlayerPrefs.GetInt("CoinsScore").ToString();
+        _coinsScoreText.text = SaveData.CoinsScore.ToString();
     }
-    //change time scale and show resume button
-    public void TogglePause()
+
+    // display or hide pause menu
+    public void TogglePauseHandler()
     {
-        if (Time.timeScale == 1.0f)
+        if (_pauseMenu.activeSelf)
         {
-            Time.timeScale = 0.0f;
-            _pauseMenu.SetActive(true);
+            _pauseMenu.SetActive(false);
         }
         else
         {
-            Time.timeScale = 1.0f;
-            _pauseMenu.SetActive(false);
+            _pauseMenu.SetActive(true);
         }
-    }
-
-    // Load MainScene
-    public void StartGame()
-    {
-        Time.timeScale = 1.0f;
-
-        SceneManager.LoadScene("MainScene");
     }
 
     //displays game over menu and change time scale

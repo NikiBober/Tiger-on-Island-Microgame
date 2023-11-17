@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+
 /// <summary>
 /// Increase score by points amount every delay interval
 /// </summary>
@@ -9,22 +10,13 @@ public class ScoreCounter : MonoBehaviour
     [SerializeField] private float _delay = 1.0f;
     [SerializeField] private int _points = 1;
     
-    private int _score = 0;
-    private int _coinsScore = 0;
+    private static int _score;
+    public static int Score { get => _score; }
 
-    private void OnEnable()
-    {
-        EventManager.OnGameOver += SaveCoinsScore;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnGameOver -= SaveCoinsScore;
-    }
 
     private void Start()
     {
-        _coinsScore = PlayerPrefs.GetInt("CoinsScore");
+        _score = 0;
         StartCoroutine(CountScoreRoutine());
     }
 
@@ -36,11 +28,5 @@ public class ScoreCounter : MonoBehaviour
             _score += _points;
             EventManager.ScoreUpdate(_score);
         }
-    }
-
-    private void SaveCoinsScore()
-    {
-        _coinsScore += _score;
-        PlayerPrefs.SetInt("CoinsScore", _coinsScore);
     }
 }
