@@ -17,18 +17,17 @@ public class SaveData : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnGameOver += SaveCoinsScore;
+        EventManager.OnGameOver += GameOverHandler;
     }
 
     private void OnDisable()
     {
-        EventManager.OnGameOver -= SaveCoinsScore;
+        EventManager.OnGameOver -= GameOverHandler;
     }
 
     private void Awake()
     {
         _coinsScore = PlayerPrefs.GetInt(_coinsScoreLabel);
-
     }
 
     public static bool IsSkinOwned(int skinIndex)
@@ -52,9 +51,14 @@ public class SaveData : MonoBehaviour
         PlayerPrefs.SetInt(_currentSkinLabel, skinIndex);
     }
 
-    private void SaveCoinsScore()
+    public static void UpdateCoinsScore (int amount)
     {
-        _coinsScore += ScoreCounter.Score;
+        _coinsScore += amount;
         PlayerPrefs.SetInt(_coinsScoreLabel, _coinsScore);
+    }
+
+    private void GameOverHandler()
+    {
+        UpdateCoinsScore(ScoreCounter.Score);
     }
 }

@@ -35,16 +35,9 @@ public class UIManager : MonoBehaviour
     }
 
     // display or hide pause menu
-    public void TogglePauseHandler()
+    private void TogglePauseHandler()
     {
-        if (_pauseMenu.activeSelf)
-        {
-            _pauseMenu.SetActive(false);
-        }
-        else
-        {
-            _pauseMenu.SetActive(true);
-        }
+        ToggleScreen(_pauseMenu);
     }
 
     //displays game over menu and change time scale
@@ -61,4 +54,17 @@ public class UIManager : MonoBehaviour
     {
         _scoreText.text = score.ToString();
     }
+
+    private void ToggleScreen(GameObject screen)
+    {
+        if (screen.activeSelf)
+        {
+            screen.SetActive(false);
+        }
+        else
+        {
+            screen.SetActive(true);
+        }
+    }
+
 }
