@@ -10,6 +10,9 @@ public class SaveData : MonoBehaviour
     private static string _coinsScoreLabel = "CoinsScore";
     private static string _skinLabel = "Skin";
     private static string _currentSkinLabel = "CurrentSkin";
+    private static string _abilityLabel = "Ability";
+
+    private static int _startAbilityCount = 1;
     private static int _skinOwnedValue = 1;
 
     private static int _coinsScore = 0;
@@ -36,10 +39,6 @@ public class SaveData : MonoBehaviour
         return isOwned;
     }
 
-    public static void UnlockSkin(int skinIndex)
-    {
-        PlayerPrefs.SetInt(_skinLabel + skinIndex.ToString(), _skinOwnedValue);
-    }
 
     public static int GetCurrentSkinIndex()
     {
@@ -49,6 +48,24 @@ public class SaveData : MonoBehaviour
     public static void SaveCurrentSkinIndex(int skinIndex)
     {
         PlayerPrefs.SetInt(_currentSkinLabel, skinIndex);
+    }
+
+    public static void UnlockSkin(int skinIndex)
+    {
+        PlayerPrefs.SetInt(_skinLabel + skinIndex.ToString(), _skinOwnedValue);
+    }
+
+    public static void AddAbility(int abilityIndex)
+    {
+        int count = GetAbilityCount(abilityIndex);
+        count++;
+        PlayerPrefs.SetInt(_abilityLabel + abilityIndex.ToString(), count);
+    }
+
+    public static int GetAbilityCount(int abilityIndex)
+    {
+        int count = PlayerPrefs.GetInt(_abilityLabel + abilityIndex.ToString(), _startAbilityCount);
+        return count;
     }
 
     public static void UpdateCoinsScore (int amount)

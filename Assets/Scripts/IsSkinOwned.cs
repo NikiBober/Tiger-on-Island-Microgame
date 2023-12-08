@@ -7,7 +7,6 @@ public class IsSkinOwned : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Enabled");
         if (SaveData.IsSkinOwned(_id))
         {
             _ownedImage.SetActive(true);

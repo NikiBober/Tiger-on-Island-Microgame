@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 /// <summary>
 /// Manages UI 
@@ -15,6 +16,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _inGameMenu;
     [SerializeField] private GameObject _gameOverMenu;
 
+    [SerializeField] private GameObject _notEnoughCoinsText;
+    [SerializeField] private float _popUpDelay = 1.0f;
+
+    [SerializeField] private TextMeshProUGUI[] _abilityCountText;
+
+    public static UIManager Instance;
+
     private void OnEnable()
     {
         EventManager.OnGameOver += GameOverHandler;
@@ -29,9 +37,28 @@ public class UIManager : MonoBehaviour
         EventManager.OnTogglePause -= TogglePauseHandler;
     }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         _coinsScoreText.text = SaveData.CoinsScore.ToString();
+        UpdateAbilitiesCount();
+    }
+
+    public void NotEnoughCoins()
+    {
+        StartCoroutine(NotEnoughCoinsRoutine());
+    }
+
+    public void UpdateAbilitiesCount()
+    {
+        for (int i = 0; i < _abilityCountText.Length; i++)
+        {
+            _abilityCountText[i].text = SaveData.GetAbilityCount(i).ToString();
+        }
     }
 
     // display or hide pause menu
@@ -67,4 +94,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private IEnumerator NotEnoughCoinsRoutine()
+    {
+        _notEnoughCoinsText.SetActive(true);
+        yield return new WaitForSeconds(_popUpDelay);
+        _notEnoughCoinsText.SetActive(false);
+    }
 }
