@@ -7,16 +7,24 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour
 {
-    [SerializeField] protected float _ratio = 2.0f;
-    [SerializeField] protected float _cooldown = 1.0f;
+    [SerializeField] protected int _id;
+    [SerializeField] protected float _ratio;
+    [SerializeField] protected float _cooldown;
     [SerializeField] protected GameObject _readyImage;
 
-    protected bool _isReady = true;
+    protected bool _isReady;
+
+    protected virtual void Start()
+    {
+        StartCoroutine(CooldownRoutine());
+    }
 
     public void Activate()
     {
         if (_isReady)
         {
+            SaveData.ChangeAbilityCount(_id, -1);
+            UIManager.Instance.UpdateAbilityCount(_id);
             ActivateMechanics();
             StartCoroutine(CooldownRoutine());
         }
@@ -28,8 +36,11 @@ public abstract class Ability : MonoBehaviour
         _isReady = false;
         _readyImage.SetActive(false);
         yield return new WaitForSeconds(_cooldown);
-        _readyImage.SetActive(true);
-        _isReady = true;
+        if (SaveData.GetAbilityCount(_id) > 0)
+        {
+            _readyImage.SetActive(true);
+            _isReady = true;
+        }
     }
 
     // for concrete realisation in ability script

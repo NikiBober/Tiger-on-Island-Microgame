@@ -44,8 +44,11 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _coinsScoreText.text = SaveData.CoinsScore.ToString();
-        UpdateAbilitiesCount();
+        UpdateCoinsScoreText();
+        for (int i = 0; i < _abilityCountText.Length; i++)
+        {
+            UpdateAbilityCount(i);
+        }
     }
 
     public void NotEnoughCoins()
@@ -53,12 +56,14 @@ public class UIManager : MonoBehaviour
         StartCoroutine(NotEnoughCoinsRoutine());
     }
 
-    public void UpdateAbilitiesCount()
+    public void UpdateCoinsScoreText()
     {
-        for (int i = 0; i < _abilityCountText.Length; i++)
-        {
-            _abilityCountText[i].text = SaveData.GetAbilityCount(i).ToString();
-        }
+        _coinsScoreText.text = SaveData.CoinsScore.ToString();
+    }
+
+    public void UpdateAbilityCount(int id)
+    {
+        _abilityCountText[id].text = SaveData.GetAbilityCount(id).ToString();
     }
 
     // display or hide pause menu

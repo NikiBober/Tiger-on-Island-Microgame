@@ -10,6 +10,8 @@ public class EventManager
 
     public delegate void ScoreUpdateAction(int score);
     public static event ScoreUpdateAction OnScoreUpdate;
+    public static event ScoreUpdateAction OnCoinsScoreUpdate;
+
 
     public static void GameOver()
     {
@@ -25,5 +27,10 @@ public class EventManager
     public static void ScoreUpdate(int score)
     {
         OnScoreUpdate(score);
+    }
+
+    public static void CoinsScoreUpdate(int score)
+    {
+        OnCoinsScoreUpdate(score);
     }
 }

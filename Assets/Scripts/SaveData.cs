@@ -4,7 +4,6 @@ using UnityEngine;
 /// Save data between sessions
 /// </summary>
 
-
 public class SaveData : MonoBehaviour
 {
     private static string _coinsScoreLabel = "CoinsScore";
@@ -39,7 +38,6 @@ public class SaveData : MonoBehaviour
         return isOwned;
     }
 
-
     public static int GetCurrentSkinIndex()
     {
         return PlayerPrefs.GetInt(_currentSkinLabel);
@@ -55,10 +53,10 @@ public class SaveData : MonoBehaviour
         PlayerPrefs.SetInt(_skinLabel + skinIndex.ToString(), _skinOwnedValue);
     }
 
-    public static void AddAbility(int abilityIndex)
+    public static void ChangeAbilityCount(int abilityIndex, int amount)
     {
         int count = GetAbilityCount(abilityIndex);
-        count++;
+        count += amount;
         PlayerPrefs.SetInt(_abilityLabel + abilityIndex.ToString(), count);
     }
 

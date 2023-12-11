@@ -6,8 +6,9 @@ public class ChangeSpeed : TimedAbility
 {
     private IslandController _islandController;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _islandController = GetComponent<IslandController>();
     }
 

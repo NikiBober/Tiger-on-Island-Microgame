@@ -2,6 +2,7 @@ public class AbilityItem : Item
 {
     protected override void Unlock()
     {
-        SaveData.AddAbility(_id);
+        SaveData.ChangeAbilityCount(_id, 1);
+        UIManager.Instance.UpdateAbilityCount(_id);
     }
 }
