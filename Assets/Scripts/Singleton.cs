@@ -6,10 +6,17 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour where T : Component
 {
     private static T _instance;
-    public static T Instance { get => _instance; set => _instance = value; }
+    public static T Instance { get => _instance; }
 
     public virtual void Awake()
     {
-        Instance = this as T;
+        if (_instance == null)
+        {
+            _instance = this as T;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
