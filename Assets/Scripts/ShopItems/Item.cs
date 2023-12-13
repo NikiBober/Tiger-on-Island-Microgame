@@ -7,7 +7,6 @@ public abstract class Item : MonoBehaviour
 
     public void Buy()
     {
-        Debug.Log("Click");
         if (SaveData.CoinsScore > _price)
         {
             SaveData.UpdateCoinsScore(-_price);

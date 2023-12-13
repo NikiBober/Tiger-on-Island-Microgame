@@ -13,6 +13,7 @@ public class SkinManager : MonoBehaviour
     {
         SaveData.UnlockSkin(_currentSkinIndex);
         _currentSkinIndex = SaveData.GetCurrentSkinIndex();
+        gameObject.GetComponent<SpriteRenderer>().sprite = _skin[_currentSkinIndex];
     }
 
     public void NextSkin()
