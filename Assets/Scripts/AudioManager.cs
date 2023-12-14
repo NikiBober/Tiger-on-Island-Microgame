@@ -16,13 +16,13 @@ public class AudioManager : Singleton<AudioManager>
         _soundSource.PlayOneShot(_sound[id]);
     }
 
-    public float GetMusicVolume()
-    {
-        return _musicSource.volume;
-    }
+    //public float GetMusicVolume()
+    //{
+    //    return _musicSource.volume;
+    //}
 
-    public float GetSoundVolume()
-    {
-        return _soundSource.volume;
-    }
+    //public float GetSoundVolume()
+    //{
+    //    return _soundSource.volume;
+    //}
 }

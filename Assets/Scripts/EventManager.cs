@@ -12,7 +12,6 @@ public class EventManager
     public static event ScoreUpdateAction OnScoreUpdate;
     public static event ScoreUpdateAction OnCoinsScoreUpdate;
 
-
     public static void GameOver()
     {
         OnGameOver();
@@ -22,7 +21,6 @@ public class EventManager
     {
         OnTogglePause();
     }
-
 
     public static void ScoreUpdate(int score)
     {

@@ -22,8 +22,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI[] _abilityCountText;
 
-    [SerializeField] private Slider _musicVolumeSlider;
-    [SerializeField] private Slider _soundVolumeSlider;
+    //[SerializeField] private Slider _musicVolumeSlider;
+    //[SerializeField] private Slider _soundVolumeSlider;
 
     public static UIManager Instance;
 
@@ -54,8 +54,8 @@ public class UIManager : MonoBehaviour
             UpdateAbilityCount(i);
         }
 
-        _musicVolumeSlider.value = AudioManager.Instance.GetMusicVolume();
-        _soundVolumeSlider.value = AudioManager.Instance.GetSoundVolume();
+        //_musicVolumeSlider.value = AudioManager.Instance.GetMusicVolume();
+        //_soundVolumeSlider.value = AudioManager.Instance.GetSoundVolume();
     }
 
     public void NotEnoughCoins()

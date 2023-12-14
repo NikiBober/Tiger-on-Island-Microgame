@@ -1,5 +1,8 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Load scene and pause functions here
@@ -7,16 +10,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private string _gameSceneName = "MainScene";
+    [SerializeField] private GameObject _loadingScreen;
+    [SerializeField] private Slider _progressBar;
+    [SerializeField] private TextMeshProUGUI _progressText;
+
     [SerializeField] private float _normalTimeScale = 1.0f;
     [SerializeField] private float _pauseTimeScale = 0.0f;
 
-    // Load MainScene
-
-    public void StartGame()
+    public void LoadScene(string sceneToLoad)
     {
         Time.timeScale = _normalTimeScale;
-        SceneManager.LoadScene(_gameSceneName);
+        _loadingScreen.SetActive(true);
+        StartCoroutine(LoadSceneRoutine(sceneToLoad));
     }
 
     public void TogglePause()
@@ -31,5 +36,20 @@ public class GameManager : MonoBehaviour
         }
 
         EventManager.TogglePause();
+    }
+
+    private IEnumerator LoadSceneRoutine(string sceneToLoad)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+
+        while (!asyncLoad.isDone)
+        {
+            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f) * 100;
+
+            _progressBar.value = progress;
+            _progressText.text = $"Loading... {Mathf.Round(progress)}%";
+
+            yield return null;
+        }
     }
 }
