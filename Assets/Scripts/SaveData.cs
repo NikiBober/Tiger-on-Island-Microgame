@@ -30,8 +30,6 @@ public class SaveData : MonoBehaviour
     private void Awake()
     {
         _coinsScore = PlayerPrefs.GetInt(_coinsScoreLabel);
-        PlayerPrefs.SetInt(_skinLabel + "1", 0);
-
     }
 
     public static bool IsSkinOwned(int skinIndex)
