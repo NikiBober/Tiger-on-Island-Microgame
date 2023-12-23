@@ -11,6 +11,7 @@ public abstract class Ability : MonoBehaviour
     [SerializeField] protected float _ratio;
     [SerializeField] protected float _cooldown;
     [SerializeField] protected GameObject _readyImage;
+    [SerializeField] protected int _abilitySoundId = 4;
 
     protected bool _isReady;
 
@@ -27,6 +28,7 @@ public abstract class Ability : MonoBehaviour
             UIManager.Instance.UpdateAbilityCount(_id);
             ActivateMechanics();
             StartCoroutine(CooldownRoutine());
+            AudioManager.Instance.PlaySound(_abilitySoundId);
         }
     }
 

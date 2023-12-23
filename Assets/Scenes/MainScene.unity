@@ -1161,7 +1161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: f743855e081f64a55ba5be58f2b15215, type: 3}
   m_Color: {r: 0.62657243, g: 0.41037738, b: 1, a: 1}
   m_FlipX: 0
@@ -1240,11 +1240,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -11, y: -6}
-  - {x: -11, y: 6}
-  - {x: 11, y: 6}
-  - {x: 11, y: -6}
-  - {x: -11, y: -6}
+  - {x: -11, y: -5.5}
+  - {x: -11, y: 5.5}
+  - {x: 11, y: 5.5}
+  - {x: 11, y: -5.5}
+  - {x: -11, y: -5.5}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -1688,6 +1688,18 @@ MonoBehaviour:
           m_StringArgument: MainScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1421430756}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &626068063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1901,6 +1913,7 @@ MonoBehaviour:
   _abilityCountText:
   - {fileID: 95114206}
   - {fileID: 1422250913}
+  _gameOverSoundId: 5
 --- !u!4 &651068744
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,6 +2156,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: StartMenuScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1421430756}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &770822771
@@ -2563,6 +2588,18 @@ MonoBehaviour:
           m_StringArgument: StartMenuScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1421430756}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &919492097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,6 +2724,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1421430756}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3526,6 +3575,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1421430756}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1321140093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4036,6 +4097,7 @@ MonoBehaviour:
   _ratio: 1.5
   _cooldown: 1
   _readyImage: {fileID: 1795710709}
+  _abilitySoundId: 4
 --- !u!114 &1440217322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4052,6 +4114,7 @@ MonoBehaviour:
   _ratio: 0.1
   _cooldown: 5
   _readyImage: {fileID: 1236364596}
+  _abilitySoundId: 4
   _duration: 3
 --- !u!1 &1508303838
 GameObject:
@@ -4154,9 +4217,9 @@ Transform:
   m_GameObject: {fileID: 1514998595}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1440217316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4200,7 +4263,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 37fcaccab90f034418e696340224ba57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4315,7 +4378,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bec1e6621b8c4df4bad56250225efb36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4451,8 +4514,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skin:
   - {fileID: 21300000, guid: bec1e6621b8c4df4bad56250225efb36, type: 3}
-  - {fileID: 21300000, guid: 37fcaccab90f034418e696340224ba57, type: 3}
-  - {fileID: 21300000, guid: 6c8b057bb2dc30946beee21af7d57dbb, type: 3}
+  - {fileID: 21300000, guid: a48d7c8df4e184a6c88b5acee30a6b91, type: 3}
+  - {fileID: 21300000, guid: 7b5af79fc08294f60b7ea46cd8503388, type: 3}
   _lockedImage: {fileID: 0}
   _playButton: {fileID: 0}
   _purchaseButoon: {fileID: 0}

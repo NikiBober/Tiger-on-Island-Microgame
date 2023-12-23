@@ -52,4 +52,9 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void PlaySound(int id)
+    {
+        AudioManager.Instance.PlaySound(id);
+    }
 }

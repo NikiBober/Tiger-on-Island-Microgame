@@ -21,9 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float _popUpDelay = 1.0f;
 
     [SerializeField] private TextMeshProUGUI[] _abilityCountText;
-
-    //[SerializeField] private Slider _musicVolumeSlider;
-    //[SerializeField] private Slider _soundVolumeSlider;
+    [SerializeField] protected int _gameOverSoundId = 5;
 
     public static UIManager Instance;
 
@@ -53,9 +51,6 @@ public class UIManager : MonoBehaviour
         {
             UpdateAbilityCount(i);
         }
-
-        //_musicVolumeSlider.value = AudioManager.Instance.GetMusicVolume();
-        //_soundVolumeSlider.value = AudioManager.Instance.GetSoundVolume();
     }
 
     public void NotEnoughCoins()
@@ -86,6 +81,7 @@ public class UIManager : MonoBehaviour
         _gameOverMenu.SetActive(true);
         _gameOverText.text = _scoreText.text;
         Time.timeScale = 0.0f;
+        AudioManager.Instance.PlaySound(_gameOverSoundId);
     }
 
     //update in game score text
