@@ -7,7 +7,7 @@ public abstract class Item : MonoBehaviour
 
     public void Buy()
     {
-        if (SaveData.CoinsScore > _price)
+        if (SaveData.CoinsScore >= _price)
         {
             SaveData.UpdateCoinsScore(-_price);
             UIManager.Instance.UpdateCoinsScoreText();
