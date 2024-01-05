@@ -32,6 +32,13 @@ public class SaveData : MonoBehaviour
         _coinsScore = PlayerPrefs.GetInt(_coinsScoreLabel);
     }
 
+    public static bool IsFirstLaunch()
+    {
+        //PlayerPrefs.DeleteKey(_coinsScoreLabel);
+        //PlayerPrefs.Save();
+        return !PlayerPrefs.HasKey(_coinsScoreLabel);
+    }
+
     public static bool IsSkinOwned(int skinIndex)
     {
         bool isOwned = PlayerPrefs.GetInt(_skinLabel + skinIndex.ToString()) == _skinOwnedValue;

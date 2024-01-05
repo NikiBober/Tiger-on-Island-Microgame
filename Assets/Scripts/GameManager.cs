@@ -13,10 +13,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Slider _progressBar;
     [SerializeField] private TextMeshProUGUI _progressText;
+    [SerializeField] private GameObject _tutorialScreen;
+
 
     [SerializeField] private float _normalTimeScale = 1.0f;
     [SerializeField] private float _pauseTimeScale = 0.0f;
 
+    private void Start()
+    {
+        if (SaveData.IsFirstLaunch())
+        {
+            _tutorialScreen.SetActive(true);
+        }
+    }
     public void LoadScene(string sceneToLoad)
     {
         Time.timeScale = _normalTimeScale;
