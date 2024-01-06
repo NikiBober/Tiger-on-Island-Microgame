@@ -25,7 +25,7 @@ public abstract class Ability : MonoBehaviour
         if (_isReady)
         {
             SaveData.ChangeAbilityCount(_id, -1);
-            UIManager.Instance.UpdateAbilityCount(_id);
+            EventManager.UpdateAbility();
             ActivateMechanics();
             StartCoroutine(CooldownRoutine());
             AudioManager.Instance.PlaySound(_abilitySoundId);

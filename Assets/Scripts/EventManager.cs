@@ -7,6 +7,7 @@ public class EventManager
     public delegate void GameAction();
     public static event GameAction OnGameOver;
     public static event GameAction OnTogglePause;
+    public static event GameAction OnUpdateAbility;
 
     public delegate void ScoreUpdateAction(int score);
     public static event ScoreUpdateAction OnScoreUpdate;
@@ -20,6 +21,11 @@ public class EventManager
     public static void TogglePause()
     {
         OnTogglePause();
+    }
+
+    public static void UpdateAbility()
+    {
+        OnUpdateAbility();
     }
 
     public static void ScoreUpdate(int score)

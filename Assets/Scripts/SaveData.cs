@@ -34,8 +34,6 @@ public class SaveData : MonoBehaviour
 
     public static bool IsFirstLaunch()
     {
-        //PlayerPrefs.DeleteKey(_coinsScoreLabel);
-        //PlayerPrefs.Save();
         return !PlayerPrefs.HasKey(_coinsScoreLabel);
     }
 

@@ -8,24 +8,15 @@ using UnityEngine.UI;
 /// Load scene and pause functions here
 /// </summary>
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Slider _progressBar;
     [SerializeField] private TextMeshProUGUI _progressText;
-    [SerializeField] private GameObject _tutorialScreen;
-
 
     [SerializeField] private float _normalTimeScale = 1.0f;
     [SerializeField] private float _pauseTimeScale = 0.0f;
 
-    private void Start()
-    {
-        if (SaveData.IsFirstLaunch())
-        {
-            _tutorialScreen.SetActive(true);
-        }
-    }
     public void LoadScene(string sceneToLoad)
     {
         Time.timeScale = _normalTimeScale;
@@ -59,11 +50,9 @@ public class GameManager : MonoBehaviour
             _progressText.text = $"Loading... {Mathf.Round(progress)}%";
 
             yield return null;
-        }
-    }
 
-    public void PlaySound(int id)
-    {
-        AudioManager.Instance.PlaySound(id);
+        }
+
+        _loadingScreen.SetActive(false);
     }
 }

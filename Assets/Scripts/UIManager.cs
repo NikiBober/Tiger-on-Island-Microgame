@@ -1,18 +1,17 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.UI;
 
 /// <summary>
 /// Manages UI 
 /// </summary>
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     [Header("UI elements")]
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _gameOverText;
-    [SerializeField] private TextMeshProUGUI _coinsScoreText;
+    [SerializeField] private TextMeshProUGUI[] _coinsScoreText;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _inGameMenu;
     [SerializeField] private GameObject _gameOverMenu;
@@ -20,10 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _notEnoughCoinsText;
     [SerializeField] private float _popUpDelay = 1.0f;
 
-    [SerializeField] private TextMeshProUGUI[] _abilityCountText;
     [SerializeField] protected int _gameOverSoundId = 5;
-
-    public static UIManager Instance;
 
     private void OnEnable()
     {
@@ -39,18 +35,9 @@ public class UIManager : MonoBehaviour
         EventManager.OnTogglePause -= TogglePauseHandler;
     }
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     private void Start()
     {
         UpdateCoinsScoreText();
-        for (int i = 0; i < _abilityCountText.Length; i++)
-        {
-            UpdateAbilityCount(i);
-        }
     }
 
     public void NotEnoughCoins()
@@ -60,12 +47,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCoinsScoreText()
     {
-        _coinsScoreText.text = SaveData.CoinsScore.ToString();
-    }
-
-    public void UpdateAbilityCount(int id)
-    {
-        _abilityCountText[id].text = SaveData.GetAbilityCount(id).ToString();
+        string coinsText = SaveData.CoinsScore.ToString();
+        foreach (TextMeshProUGUI textElement in _coinsScoreText)
+        {
+            textElement.text = coinsText;
+        }
     }
 
     // display or hide pause menu

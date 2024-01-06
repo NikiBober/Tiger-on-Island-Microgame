@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -14,4 +12,8 @@ public class TutorialManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    private void Start()
+    {
+        gameObject.SetActive(SaveData.IsFirstLaunch());
+    }
 }
